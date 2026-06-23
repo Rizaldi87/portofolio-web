@@ -16,7 +16,7 @@ export default function ExperienceSection() {
         </p>
       </div>
       <div>
-        <h1 className="leading-12 text-4xl text-white font-mono">
+        <h1 className="leading-8 sm:leading-12 text-2xl sm:text-4xl text-white font-mono">
           My <span className="text-[#4f8ef7]">profesional & education </span> experiences
         </h1>
       </div>

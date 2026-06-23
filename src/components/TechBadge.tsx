@@ -31,6 +31,10 @@ export default function TechBadge({techName, dotColor, toolTip} : props) {
     hover:border-[rgba(79,142,247,0.4)]
     hover:bg-[rgba(79,142,247,0.06)]
     hover:-translate-y-0.5
+
+    active:border-[rgba(79,142,247,0.4)]
+    active:bg-[rgba(79,142,247,0.06)]
+    active:-translate-y-0.5
     ">
         <div style={{backgroundColor: dotColor}} className={`w-1.5 h-1.5 rounded-[50%] shrink-0`}></div>
         <div>{techName}</div>
@@ -72,6 +76,9 @@ export default function TechBadge({techName, dotColor, toolTip} : props) {
 
                 group-hover:opacity-100
                 group-hover:translate-y-0
+                
+                group-active:opacity-100
+                group-active:translate-y-0
                 
                 after:content-['']
                 after:absolute

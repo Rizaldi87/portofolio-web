@@ -46,6 +46,7 @@ export default function ContactSection() {
                     after:duration-300
 
                     hover:after:w-full
+                    active:after:w-full
                 "
         >
           rizaldiibnum@gmail.com
@@ -69,6 +70,7 @@ export default function ContactSection() {
                     transition-colors
                     duration-200
                     hover:text-(--text)
+                    active:text-(--text)
                     "
           >
             GitHub
@@ -84,6 +86,7 @@ export default function ContactSection() {
                     transition-colors
                     duration-200
                     hover:text-(--text)
+                    active:text-(--text)
                     "
           >
             LinkedIn
@@ -99,6 +102,7 @@ export default function ContactSection() {
                     transition-colors
                     duration-200
                     hover:text-(--text)
+                    active:text-(--text)
                     "
           >
             Resume

@@ -16,11 +16,11 @@ export default function AboutMeSection() {
         </p>
       </div>
       <div>
-        <h1 className="leading-12 text-4xl text-white font-mono">
+        <h1 className="leading-8 sm:leading-12 text-2xl sm:text-4xl text-white font-mono ">
           I am a <span className="text-[#4f8ef7]">Software Engineer</span>
         </h1>
       </div>
-      <div className="flex flex-col lg:flex-row gap-10 mt-10 text-xl">
+      <div className="flex flex-col lg:flex-row gap-10 mt-10 text-sm sm:text-xl">
         <div className="text-[#6b6b88] w-fit lg:w-2xl text-justify">
           <p>
             I am a detail-oriented Software Engineer with over 1 year of professional experience, focused on building reliable, maintainable, and high-quality software solutions. I currently develop and maintain a Hospital Management System

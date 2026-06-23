@@ -14,7 +14,7 @@ export default function Cursor() {
         background: '#4f8ef7',
         borderRadius: '50%',
         pointerEvents: 'none',
-        zIndex: 9999,
+        zIndex: 100,
         transform: 'translate(-50%, -50%)',
       }} />
  

@@ -16,7 +16,7 @@ export default function ProjectSections() {
         </p>
       </div>
       <div>
-        <h1 className="leading-12 text-4xl text-white font-mono">
+        <h1 className="leading-12 text-2xl sm:text-4xl text-white font-mono">
           My <span className="text-[#4f8ef7]">best projects </span>
         </h1>
       </div>

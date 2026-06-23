@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import Cursor from "./components/Cursor";
 import NavBar from "./components/NavBar";
@@ -7,13 +8,17 @@ import ContactSection from "./components/Sections/ContactSection";
 import ExperienceSection from "./components/Sections/ExperienceSection";
 import HeroSection from "./components/Sections/HeroSection";
 import ProjectSections from "./components/Sections/ProjectSections";
+import SplashScreen from "./components/SplashScreen";
+import Footer from "./components/Sections/Footer";
 
 function App() {
+  const [splashDone, setSplashDone] = useState(false)
   return (
     <>
+      {!splashDone && <SplashScreen onFinish={() => setSplashDone(true)} />}
       <ParticleField />
       <Cursor />
-      <div className="relative z-10 w-full min-h-screen">
+      <div className={`relative z-10 w-full min-h-screen transition-opacity duration-700 ${splashDone ? 'opacity-100' : 'opacity-0'}`}>
         <NavBar />
 
         {/* hero section */}
@@ -30,6 +35,9 @@ function App() {
 
         {/* Contact section */}
         <ContactSection />
+
+        {/* footer */}
+        <Footer/>
       </div>
     </>
   );

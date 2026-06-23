@@ -4,8 +4,8 @@ import Laptop from "../Laptop";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-screen flex flex-col sm:flex-row items-center px-12 lg:px-24 max-w-full">
-      <div className="border border-amber-400 flex flex-col gap-2 w-xl  ">
+    <section className="min-h-screen mt-10 sm:mt-0 flex flex-col sm:flex-row items-center gap-6 sm:gap-0 px-6 sm:px-12 lg:px-24 pt-24 max-w-full">
+      <div className="flex flex-col gap-2 w-full lg:max-w-md xl:max-w-xl">
         <div className="flex items-center gap-3 w-fit">
           <div className="w-10 h-px bg-[#4f8ef7]"></div>
           <p
@@ -39,11 +39,11 @@ export default function HeroSection() {
             </span>
           </h1>
         </div>
-        <div className="text-mono text-[#6b6b88] text-xl">Software Engineer focused on building reliable applications, scalable systems, and clean user experiences.</div>
+        <div className="text-mono text-[#6b6b88] text-sm sm:text-base lg:text-xl">Software Engineer focused on building reliable applications, scalable systems, and clean user experiences.</div>
       </div>
-      <div className="w-full sm:flex-1 h-[50vh] sm:h-[70vh]">
+      <div className="w-full sm:flex-1 h-[40vh] sm:h-[50vh] lg:h-[70vh]">
         <Canvas
-          className="w-full h-full flex-1 border border-amber-200"
+          className="w-full h-full flex-1 "
           dpr={[1, 1.5]}
           orthographic
           camera={{
@@ -53,7 +53,7 @@ export default function HeroSection() {
             far: 100,
           }}
         >
-          <ambientLight intensity={1} />
+          <ambientLight intensity={3} />
 
           <directionalLight position={[5, 5, 5]} intensity={2} />
 
@@ -65,3 +65,5 @@ export default function HeroSection() {
     </section>
   );
 }
+
+

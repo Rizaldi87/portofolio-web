@@ -55,6 +55,9 @@ export default function ProjectCard({ projectTitle, projectDesc, tags }: props) 
             will-change-transform
             hover:border-[rgba(79,142,247,0.3)]
             hover:shadow-[0_16px_48px_rgba(0,0,0,0.4),0_0_0_1px_rgba(79,142,247,0.1)]
+
+            active:border-[rgba(79,142,247,0.3)]
+            active:shadow-[0_16px_48px_rgba(0,0,0,0.4),0_0_0_1px_rgba(79,142,247,0.1)]
             flex
             flex-col
             gap-5
@@ -62,7 +65,7 @@ export default function ProjectCard({ projectTitle, projectDesc, tags }: props) 
     >
       <h1
         className="font-mono text-[1.1rem] text-(--text)
-                font-bold tracking-[-0.01rem] group-hover:text-(--accent) transition-color duration-200"
+                font-bold tracking-[-0.01rem] group-hover:text-(--accent) group-active:text-(--accent) transition-color duration-200"
       >
         {projectTitle}
       </h1>
@@ -74,7 +77,7 @@ export default function ProjectCard({ projectTitle, projectDesc, tags }: props) 
           return (
             <div
               key={index}
-              className=" group-hover:text-(--accent) group-hover:border-[rgba(9,142,247,0.3)] text-[0.7rem]
+              className="group-active:text-(--accent) group-active:border-[rgba(9,142,247,0.3)] group-hover:text-(--accent) group-hover:border-[rgba(9,142,247,0.3)] text-[0.7rem]
                     tracking-[0.08em]
                     uppercase
                     text-(--muted)
@@ -94,12 +97,14 @@ export default function ProjectCard({ projectTitle, projectDesc, tags }: props) 
       </div>
 
       <div className="flex justify-between items-center">
-        <span className="text-(--muted) group-hover:text-(--accent)">DETAILS</span>
+        <span className="text-(--muted) group-hover:text-(--accent) group-active:text-(--accent)">DETAILS</span>
         <span
-          className="text-(--muted) group-hover:text-(--accent) w-6 h-6 rounded-[50%] group-hover:bg-(--muted)
-                    flex items-center justify-center text-sm border border-(--muted) group-hover:border-(--accent)"
+          className="text-(--muted) group-hover:text-(--accent) group-active:text-(--accent) w-6 h-6 rounded-[50%]
+                    flex items-center justify-center"
         >
-          {"->"}
+          <span className="material-symbols-outlined text-xs">
+            arrow_forward
+          </span>
         </span>
       </div>
     </div>
