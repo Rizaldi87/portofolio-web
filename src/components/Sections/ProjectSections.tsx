@@ -19,14 +19,14 @@ export default function ProjectSections() {
     {
       projectTitle: "EnglishPath (Backend)",
       projectDesc: "Full-stack learning platform with admin dashboard, student courses, quizzes, submissions, and authentication flow using REST API architecture.",
-      image: "/public/images/erd.png",
+      image: "/images/erd.png",
       tags: ["Nest Js", "PostgreSQL", "TypeScript"],
       repoUrl: "https://github.com/Rizaldi87/crack-be-Rizaldi87",
     },
     {
       projectTitle: "EnglishPath (Frontend)",
       projectDesc: "Full-stack learning platform with admin dashboard, student courses, quizzes, submissions, and authentication flow using REST API architecture.",
-      image: "/public/images/image(6).png",
+      image: "/images/image(6).png",
       tags: ["Next js", "React Js", "TailwindCSS"],
       repoUrl: "https://github.com/Rizaldi87/crack-fe-Rizaldi87",
     },
@@ -39,7 +39,7 @@ export default function ProjectSections() {
     {
       projectTitle: "Cell In Rogue",
       projectDesc: "2D game project featuring character movement, enemy combat system, skills, upgrades, and procedural level generation.",
-      image: "/public/images/game.jpg",
+      image: "/images/game.jpg",
       tags: ["Unity", "C#", "Game Dev", "Procedural"],
       demoUrl: "https://rizzzydi-rizz.itch.io/cell-in-rogue",
     },
