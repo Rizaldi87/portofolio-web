@@ -1,46 +1,32 @@
-
 export default function ContactSection() {
   return (
     <section id="contact" className="bg-(--bg2)">
-        <div
-            className="
+      <div
+        className="
             text-center
             max-w-155
             mx-auto
             px-8
             py-28
             "
-        >
-            <p
-            className="
-                flex
-                justify-center
-                text-(--accent)
-            "
-            >
-                Kontak
-            </p>
+      >
+        <h2 className="section-title text-(--text) font-mono text-2xl">
+          Let's Build Something <span className="text-(--accent)">Great Together</span>
+        </h2>
 
-            <h2 className="section-title text-(--text) font-mono text-2xl">
-                Let's Build Something <span className="text-(--accent)">Great Together</span>
-            </h2>
-
-            <p
-            className="
+        <p
+          className="
                 text-(--muted)
                 mb-10
                 text-base
             "
-            >
-                I'm always interested in discussing new opportunities, collaborating on
-                meaningful projects, and solving real-world problems through software.
-                Whether you have a project in mind or simply want to connect, feel free
-                to reach out.
-            </p>
+        >
+          I'm always interested in discussing new opportunities, collaborating on meaningful projects, and solving real-world problems through software. Whether you have a project in mind or simply want to connect, feel free to reach out.
+        </p>
 
-            <a
-                href="mailto:rizaldiibnum@gmail.com"
-                className="
+        <a
+          href="mailto:rizaldiibnum@gmail.com"
+          className="
                     inline-block
                     font-mono
                     text-[1.2rem]
@@ -61,21 +47,21 @@ export default function ContactSection() {
 
                     hover:after:w-full
                 "
-            >
-                rizaldiibnum@gmail.com
-            </a>
+        >
+          rizaldiibnum@gmail.com
+        </a>
 
-            <div
-            className="
+        <div
+          className="
                 flex
                 justify-center
                 gap-6
                 mt-10
             "
-            >
-                <a
-                    href="https://github.com/Rizaldi87"
-                    className="
+        >
+          <a
+            href="https://github.com/Rizaldi87"
+            className="
                     text-[0.75rem]
                     tracking-[0.12em]
                     uppercase
@@ -84,13 +70,13 @@ export default function ContactSection() {
                     duration-200
                     hover:text-(--text)
                     "
-                >
-                    GitHub
-                </a>
+          >
+            GitHub
+          </a>
 
-                <a
-                    href="https://id.linkedin.com/in/rizaldi-ibnu-mohamad-b898bb318"
-                    className="
+          <a
+            href="https://id.linkedin.com/in/rizaldi-ibnu-mohamad-b898bb318"
+            className="
                     text-[0.75rem]
                     tracking-[0.12em]
                     uppercase
@@ -99,13 +85,13 @@ export default function ContactSection() {
                     duration-200
                     hover:text-(--text)
                     "
-                >
-                    LinkedIn
-                </a>
+          >
+            LinkedIn
+          </a>
 
-                <a
-                    href="#"
-                    className="
+          <a
+            href="#"
+            className="
                     text-[0.75rem]
                     tracking-[0.12em]
                     uppercase
@@ -114,11 +100,11 @@ export default function ContactSection() {
                     duration-200
                     hover:text-(--text)
                     "
-                >
-                    Resume
-                </a>
-            </div>
+          >
+            Resume
+          </a>
         </div>
+      </div>
     </section>
-  )
+  );
 }

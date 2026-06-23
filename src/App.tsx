@@ -1,42 +1,38 @@
-
-import './App.css'
-import Cursor from './components/Cursor'
-import NavBar from './components/NavBar'
-import ParticleField from './components/Particles'
-import AboutMeSection from './components/Sections/AboutMeSection'
-import ContactSection from './components/Sections/ContactSection'
-import ExperienceSection from './components/Sections/ExperienceSection'
-import HeroSection from './components/Sections/HeroSection'
-import ProjectSections from './components/Sections/ProjectSections'
-
+import "./App.css";
+import Cursor from "./components/Cursor";
+import NavBar from "./components/NavBar";
+import ParticleField from "./components/Particles";
+import AboutMeSection from "./components/Sections/AboutMeSection";
+import ContactSection from "./components/Sections/ContactSection";
+import ExperienceSection from "./components/Sections/ExperienceSection";
+import HeroSection from "./components/Sections/HeroSection";
+import ProjectSections from "./components/Sections/ProjectSections";
 
 function App() {
-  
   return (
     <>
+      <ParticleField />
+      <Cursor />
+      <div className="relative z-10 w-full min-h-screen">
+        <NavBar />
 
-      <ParticleField/>
-      <Cursor/>
-      <div className='relative z-10 w-full min-h-screen'>
-        <NavBar/>
-        
         {/* hero section */}
-        <HeroSection/>
+        <HeroSection />
 
         {/* about me section */}
-        <AboutMeSection/>
+        <AboutMeSection />
 
         {/* projects section */}
-        <ProjectSections/>
+        <ProjectSections />
 
         {/* experiences section */}
-        <ExperienceSection/>
+        <ExperienceSection />
 
         {/* Contact section */}
-        <ContactSection/>
+        <ContactSection />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
