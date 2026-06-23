@@ -93,7 +93,7 @@ export default function ContactSection() {
           </a>
 
           <a
-            href="#"
+            href="/docs/cv.pdf"
             className="
                     text-[0.75rem]
                     tracking-[0.12em]
