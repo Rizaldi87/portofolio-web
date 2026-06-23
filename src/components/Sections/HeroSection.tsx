@@ -40,6 +40,16 @@ export default function HeroSection() {
           </h1>
         </div>
         <div className="text-mono text-[#6b6b88] text-sm sm:text-base lg:text-xl">Software Engineer focused on building reliable applications, scalable systems, and clean user experiences.</div>
+        <a
+          href="/docs/cv.pdf"
+          download
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md
+              bg-(--accent) text-white font-mono text-sm
+              hover:brightness-110 transition-all mt-4 w-fit"
+        >
+          <span className="material-symbols-outlined text-base">download</span>
+          Download CV
+        </a>
       </div>
       <div className="w-full sm:flex-1 h-[40vh] sm:h-[50vh] lg:h-[70vh]">
         <Canvas

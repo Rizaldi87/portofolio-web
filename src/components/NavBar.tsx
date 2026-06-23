@@ -21,9 +21,7 @@ export default function NavBar() {
       >
         <span className="text-[#4f8ef7]">$</span>
 
-        <span className="text-white">
-          rizaldi
-        </span>
+        <span className="text-white">rizaldi</span>
 
         <span className="w-2 h-4 bg-[#4f8ef7] animate-pulse"></span>
       </div>
@@ -66,6 +64,16 @@ export default function NavBar() {
           sm:bg-transparent
         `}
       >
+        <a
+          href="/docs/cv.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-(--accent) hover:text-(--text) font-mono text-sm
+              border border-(--accent) rounded-sm px-3 py-1
+              transition-colors"
+        >
+          CV
+        </a>
         <a href="#about" className="text-[#6b6b88] hover:text-[#e8e8f0] active:text-[#e8e8f0]">
           About Me
         </a>
