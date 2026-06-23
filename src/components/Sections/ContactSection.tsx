@@ -105,7 +105,7 @@ export default function ContactSection() {
                     active:text-(--text)
                     "
           >
-            Resume
+            My Cv
           </a>
         </div>
       </div>
