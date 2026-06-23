@@ -1,13 +1,14 @@
 import type { CSSProperties } from "react";
 
 type props = {
-    techName : String,
-    dotColor: CSSProperties["color"];
-    toolTip?: String
-}
-export default function TechBadge({techName, dotColor, toolTip} : props) {
+  techName: string;
+  dotColor: CSSProperties["color"];
+  toolTip?: string;
+};
+export default function TechBadge({ techName, dotColor, toolTip }: props) {
   return (
-    <div className="
+    <div
+      className="
     tech-badge
     relative
     group
@@ -35,12 +36,13 @@ export default function TechBadge({techName, dotColor, toolTip} : props) {
     active:border-[rgba(79,142,247,0.4)]
     active:bg-[rgba(79,142,247,0.06)]
     active:-translate-y-0.5
-    ">
-        <div style={{backgroundColor: dotColor}} className={`w-1.5 h-1.5 rounded-[50%] shrink-0`}></div>
-        <div>{techName}</div>
+    "
+    >
+      <div style={{ backgroundColor: dotColor }} className={`w-1.5 h-1.5 rounded-[50%] shrink-0`}></div>
+      <div>{techName}</div>
 
-        <div
-            className="
+      <div
+        className="
                 absolute
                 bottom-[calc(100%+10px)]
                 left-1/2
@@ -90,9 +92,9 @@ export default function TechBadge({techName, dotColor, toolTip} : props) {
                 after:border-transparent
                 after:border-t-[rgba(79,142,247,0.25)]
             "
-            >
-            {toolTip}
-        </div>
+      >
+        {toolTip}
+      </div>
     </div>
-  )
+  );
 }

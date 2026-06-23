@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import Laptop from "../Laptop";
+import { lazy, Suspense } from "react";
 
+const LaptopScene = lazy(() => import("../Laptop"));
 export default function HeroSection() {
   return (
     <section className="min-h-screen mt-10 sm:mt-0 flex flex-col sm:flex-row items-center gap-6 sm:gap-0 px-6 sm:px-12 lg:px-24 pt-24 max-w-full">
@@ -58,12 +58,10 @@ export default function HeroSection() {
           <directionalLight position={[5, 5, 5]} intensity={2} />
 
           <Suspense fallback={null}>
-            <Laptop />
+            <LaptopScene />
           </Suspense>
         </Canvas>
       </div>
     </section>
   );
 }
-
-

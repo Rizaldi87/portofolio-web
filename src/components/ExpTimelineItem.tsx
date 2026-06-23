@@ -1,14 +1,15 @@
 type props = {
-    period:String;
-    title:String;
-    company:String;
-    description:String;
-}
+  period: string;
+  title: string;
+  company: string;
+  description: string;
+};
 
-export default function ExpTimelineItem({period, title, company, description}:props) {
+export default function ExpTimelineItem({ period, title, company, description }: props) {
   return (
     <div>
-        <div className="
+      <div
+        className="
             relative
             pb-12
             
@@ -29,45 +30,47 @@ export default function ExpTimelineItem({period, title, company, description}:pr
             before:border-(--accent)
             before:-translate-x-0.7
             "
-        >
-            <p className="
+      >
+        <p
+          className="
                     font-mono
                     text-[0.7rem]
                     text-(--accent)
                     tracking-widest
                     mb-[0.4rem]
                 "
-            >
-                {period}
-            </p>
-            <h3 className="
+        >
+          {period}
+        </p>
+        <h3
+          className="
                     text-(--text)
                     text-[1.05rem]
                     font-medium
                     mb-[0.2rem]
                 "
-            >
-                {title}
-            </h3>
-            <p
-                className="
+        >
+          {title}
+        </h3>
+        <p
+          className="
                     text-[0.85rem]
                     text-(--muted)
                     mb-3
                 "
-            >
-                {company}
-            </p>
-            <p
-                className="
+        >
+          {company}
+        </p>
+        <p
+          className="
                     text-sm
                     text-(--muted)
                     leading-[1.8]
                 "
-            >
-                {description}
-            </p>
-        </div>
+        >
+          {description}
+        </p>
+      </div>
     </div>
-  )
+  );
 }

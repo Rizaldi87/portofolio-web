@@ -1,9 +1,10 @@
 type props = {
-  projectTitle: String;
-  projectDesc: String;
-  tags: String[];
+  projectTitle: string;
+  projectDesc: string;
+  tags: string[];
+  onClick?: () => void;
 };
-export default function ProjectCard({ projectTitle, projectDesc, tags }: props) {
+export default function ProjectCard({ projectTitle, projectDesc, tags, onClick }: props) {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
 
@@ -40,6 +41,7 @@ export default function ProjectCard({ projectTitle, projectDesc, tags }: props) 
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onMouseEnter={handleMouseEnter}
+      onClick={onClick}
       className="
             project-card
             group
@@ -102,9 +104,7 @@ export default function ProjectCard({ projectTitle, projectDesc, tags }: props) 
           className="text-(--muted) group-hover:text-(--accent) group-active:text-(--accent) w-6 h-6 rounded-[50%]
                     flex items-center justify-center"
         >
-          <span className="material-symbols-outlined text-xs">
-            arrow_forward
-          </span>
+          <span className="material-symbols-outlined text-xs">arrow_forward</span>
         </span>
       </div>
     </div>
