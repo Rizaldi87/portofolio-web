@@ -144,10 +144,10 @@ export default function Laptop() {
     if (screenRef.current) {
       glowAnim = animate(screenRef.current.material, {
         emissiveIntensity: [10, 40],
-        duration: 500,
+        duration: 100,
         alternate: true,
         loop: true,
-        ease: "inOutSine",
+        ease: "inOutQuad",
       });
     }
 
