@@ -56,18 +56,29 @@ export default function NavBar() {
       </div>
 
       <div className="flex items-center gap-4">
-        <button onClick={() => setIsOpen(!isOpen)} id="menu" className="sm:hidden">
+
+        <button
+            onClick={handleToggleTheme}
+            className="text-(--muted) hover:text-(--text) active:text-(--text) transition-colors flex items-center"
+            aria-label="Toggle theme"
+          >
+            <span className="material-symbols-outlined">
+              {theme === "dark" ? "light_mode" : "dark_mode"}
+            </span>
+          </button>
+        <button onClick={() => setIsOpen(!isOpen)} id="menu" className="sm:hidden flex items-center">
           <span className="material-symbols-outlined text-(--text) hover:text-(--accent) active:text-(--accent)">
             {isOpen ? "close" : "menu"}
           </span>
         </button>
-
+        
         <div
           className={`
             fixed
             left-0
-            top-19
+            top-18
             w-full
+            h-screen
             py-10
             flex
             flex-col
@@ -84,6 +95,7 @@ export default function NavBar() {
             sm:static
             sm:translate-x-0
             sm:w-auto
+            sm:h-auto
             sm:py-0
             sm:flex-row
             sm:gap-6
@@ -91,16 +103,6 @@ export default function NavBar() {
             sm:backdrop-blur-none
           `}
         >
-          <button
-            onClick={handleToggleTheme}
-            className="text-(--muted) hover:text-(--text) active:text-(--text) transition-colors flex items-center"
-            aria-label="Toggle theme"
-          >
-            <span className="material-symbols-outlined">
-              {theme === "dark" ? "light_mode" : "dark_mode"}
-            </span>
-          </button>
-
           <a
             href="/docs/cv.pdf"
             target="_blank"
