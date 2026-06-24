@@ -11,7 +11,7 @@ export default function Cursor() {
         top: dot.y,
         width: 6,
         height: 6,
-        background: '#4f8ef7',
+        background: 'var(--accent)',
         borderRadius: '50%',
         pointerEvents: 'none',
         zIndex: 100,

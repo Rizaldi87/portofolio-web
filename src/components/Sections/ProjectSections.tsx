@@ -1,6 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState } from "react";
 import ProjectCard from "../ProjectCard";
 import ProjectDetailModal from "../ProjectDetailModal";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { spring } from "animejs";
 
 type ProjectData = {
   projectTitle: string;
@@ -52,21 +55,21 @@ export default function ProjectSections() {
   ];
   return (
     <section id="project" className="min-h-screen p-6 max-w-ful px-12 lg:px-24">
-      <div className="flex items-center gap-3 w-fit">
-        <div className="w-10 h-px bg-[#4f8ef7]"></div>
+      <div ref={useScrollReveal({fromTranslateY:30, delay: 100, once:false})} className="flex items-center gap-3 w-fit">
+        <div className="w-10 h-px bg-(--accent)"></div>
         <p
           className="
             text 
             font-mono 
-            text-[#4f8ef7]
+            text-(--accent)
             "
         >
           Projects
         </p>
       </div>
-      <div>
-        <h1 className="leading-12 text-2xl sm:text-4xl text-white font-mono">
-          My <span className="text-[#4f8ef7]">best projects </span>
+      <div ref={useScrollReveal({fromTranslateY:30, delay: 100, once:false})}>
+        <h1 className="leading-12 text-2xl sm:text-4xl text-(--text) font-mono">
+          My <span className="text-(--accent)">best projects </span>
         </h1>
       </div>
 
@@ -74,12 +77,14 @@ export default function ProjectSections() {
         className=" grid gap-6 mt-5
             grid-cols-[repeat(auto-fit,minmax(200px,1fr))]"
       >
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.projectTitle}
-            {...project} // spread semua prop
-            onClick={() => setSelectedProject(project)}
-          />
+        {projects.map((project, index) => (
+          <div key={index} ref={useScrollReveal({fromTranslateY:30, delay: index * 100, ease:spring({stiffness:90, damping:14}), once:false})}>
+            <ProjectCard            
+              
+              {...project} // spread semua prop
+              onClick={() => setSelectedProject(project)}
+            />
+          </div>
         ))}
       </div>
       {selectedProject && <ProjectDetailModal project={selectedProject} onClose={() => setSelectedProject(null)} />}

@@ -37,7 +37,7 @@ function Particles() {
 export default function ParticleField() {
   return (
     <Canvas
-      style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", backgroundColor: "#0a0a0f" }}
+      style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", backgroundColor: "var(--bg)" }}
       camera={{ fov: 60, near: 0.1, far: 1000, position: [0, 0, 50] }}
       gl={{ alpha: true, antialias: false }}
       dpr={Math.min(devicePixelRatio, 1.5)}

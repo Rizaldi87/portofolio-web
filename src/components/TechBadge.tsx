@@ -49,7 +49,7 @@ export default function TechBadge({ techName, dotColor, toolTip }: props) {
                 -translate-x-1/2
                 translate-y-1.5
 
-                bg-[#1a1a2e]
+                bg-(--bg3)
                 border
                 border-[rgba(79,142,247,0.25)]
                 rounded-lg
@@ -74,7 +74,7 @@ export default function TechBadge({ techName, dotColor, toolTip }: props) {
                 tracking-normal
                 leading-1.5
 
-                shadow-[0_8px_24px_rgba(0,0,0,0.4)]
+                shadow-(--shadow)
 
                 group-hover:opacity-100
                 group-hover:translate-y-0

@@ -1,6 +1,9 @@
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+
 export default function ContactSection() {
+  const headingRef = useScrollReveal({ fromTranslateY: 30, delay: 200,once:false, duration:300 })
   return (
-    <section id="contact" className="bg-(--bg2)">
+    <section ref={headingRef} id="contact" className="bg-(--bg2)">
       <div
         className="
             text-center
@@ -8,6 +11,7 @@ export default function ContactSection() {
             mx-auto
             px-8
             py-28
+            z-10
             "
       >
         <h2 className="section-title text-(--text) font-mono text-2xl">

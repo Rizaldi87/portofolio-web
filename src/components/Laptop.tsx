@@ -1,10 +1,33 @@
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 import { useFrame, useThree, type ThreeEvent } from "@react-three/fiber";
+import { animate } from "animejs";
+import "animejs/adapters/three";
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
+import { useTheme } from "../context/ThemeContext";
+
+type Theme = "light" | "dark";
+
+const materialColors: Record<Theme, { body: string; screenBorder: string; logo: string; detail: string, outline:string }> = {
+  dark: {
+    body: "#18182a",
+    screenBorder: "#0a0a0f",
+    logo: "#18182a",
+    detail: "#7c6af5",
+    outline:"#4f8ef7",
+  },
+   light: {
+    body: "#889cb7",
+    screenBorder: "#667b99",
+    logo: "#47566b",
+    detail: "#667b99",
+    outline: "#cbd5e1"
+  },
+};
 
 export default function Laptop() {
   const { scene } = useGLTF("/models/laptop.glb");
+  const { theme } = useTheme();
   const ref = useRef<THREE.Group | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const { size } = useThree();
@@ -22,6 +45,14 @@ export default function Laptop() {
   const isInteracting = useRef(false);
   const lastInteractTime = useRef(0);
   const AUTO_ROTATE_DELAY = 1000;
+
+  const bodyRef = useRef<THREE.Mesh | null>(null);
+  const screenBorderRef = useRef<THREE.Mesh | null>(null);
+  const logoRef = useRef<THREE.Mesh | null>(null);
+  const detailRef = useRef<THREE.Mesh | null>(null);
+  const screenRef = useRef<THREE.Mesh | null>(null);
+
+  // First render: traverse & setup materials
   useEffect(() => {
     videoTexRef.current = videoTex;
     const videoImage = videoTexRef.current?.image;
@@ -29,38 +60,53 @@ export default function Laptop() {
       videoImage.playbackRate = 0.25;
     }
 
+    const cols = materialColors[theme];
+
     scene.traverse((child) => {
       if (child instanceof THREE.Mesh) {
         const mat = child.material as THREE.MeshStandardMaterial;
         const gradientMap = createGradientTexture();
 
         switch (mat.name) {
-          case "Material.001": // body
-            child.material = new THREE.MeshToonMaterial({
-              color: new THREE.Color("#18182a"),
+          case "Material.001": {
+            const mesh = child as THREE.Mesh;
+            mesh.material = new THREE.MeshToonMaterial({
+              color: new THREE.Color(cols.body),
               gradientMap,
             });
+            bodyRef.current = mesh;
             break;
-          case "Material.005": // layar
-            child.material = new THREE.MeshToonMaterial({
-              color: new THREE.Color("#0a0a0f"),
+          }
+          case "Material.005": {
+            const mesh = child as THREE.Mesh;
+            mesh.material = new THREE.MeshToonMaterial({
+              color: new THREE.Color(cols.screenBorder),
               emissive: new THREE.Color("#4f8ef7"),
             });
+            screenBorderRef.current = mesh;
             break;
-          case "Cel Shading": // logo/aksen
-            child.material = new THREE.MeshToonMaterial({
-              color: new THREE.Color("#18182a"),
+          }
+          case "Cel Shading": {
+            const mesh = child as THREE.Mesh;
+            mesh.material = new THREE.MeshToonMaterial({
+              color: new THREE.Color(cols.logo),
               gradientMap,
             });
+            logoRef.current = mesh;
             break;
-          case "Material.004": // detail kecil
-            child.material = new THREE.MeshToonMaterial({
-              color: new THREE.Color("#7c6af5"),
+          }
+          case "Material.004": {
+            const mesh = child as THREE.Mesh;
+            mesh.material = new THREE.MeshToonMaterial({
+              color: new THREE.Color(cols.detail),
               gradientMap,
             });
+            detailRef.current = mesh;
             break;
-          case "Monitor_mat":
-            child.material = new THREE.MeshStandardMaterial({
+          }
+          case "Monitor_mat": {
+            const mesh = child as THREE.Mesh;
+            mesh.material = new THREE.MeshStandardMaterial({
               map: videoTex,
               color: new THREE.Color("#7c6af5"),
               emissive: new THREE.Color("#7c6af5"),
@@ -68,64 +114,97 @@ export default function Laptop() {
               emissiveMap: videoTex,
               side: THREE.DoubleSide,
             });
+            screenRef.current = mesh;
 
-            {
-              const uv = child.geometry.attributes.uv;
-              if (uv) {
-                let uMin = Infinity,
-                  uMax = -Infinity;
-                let vMin = Infinity,
-                  vMax = -Infinity;
-                for (let i = 0; i < uv.count; i++) {
-                  uMin = Math.min(uMin, uv.getX(i));
-                  uMax = Math.max(uMax, uv.getX(i));
-                  vMin = Math.min(vMin, uv.getY(i));
-                  vMax = Math.max(vMax, uv.getY(i));
-                }
-                const uRange = uMax - uMin || 1;
-                const vRange = vMax - vMin || 1;
-                for (let i = 0; i < uv.count; i++) {
-                  uv.setXY(i, (uv.getX(i) - uMin) / uRange, (uv.getY(i) - vMin) / vRange);
-                }
-                uv.needsUpdate = true;
+            const uv = child.geometry.attributes.uv;
+            if (uv) {
+              let uMin = Infinity, uMax = -Infinity;
+              let vMin = Infinity, vMax = -Infinity;
+              for (let i = 0; i < uv.count; i++) {
+                uMin = Math.min(uMin, uv.getX(i));
+                uMax = Math.max(uMax, uv.getX(i));
+                vMin = Math.min(vMin, uv.getY(i));
+                vMax = Math.max(vMax, uv.getY(i));
               }
+              const uRange = uMax - uMin || 1;
+              const vRange = vMax - vMin || 1;
+              for (let i = 0; i < uv.count; i++) {
+                uv.setXY(i, (uv.getX(i) - uMin) / uRange, (uv.getY(i) - vMin) / vRange);
+              }
+              uv.needsUpdate = true;
             }
             break;
+          }
         }
       }
     });
-  }, [scene, videoTex]);
+
+    // Glow pulse
+    let glowAnim: ReturnType<typeof animate> | null = null;
+    if (screenRef.current) {
+      glowAnim = animate(screenRef.current.material, {
+        emissiveIntensity: [10, 40],
+        duration: 500,
+        alternate: true,
+        loop: true,
+        ease: "inOutSine",
+      });
+    }
+
+    return () => {
+      if (glowAnim && typeof glowAnim.revert === "function") glowAnim.revert();
+    };
+  }, [scene, videoTex, theme]);
+
+  // Theme change: animate material colors
+  useEffect(() => {
+    const cols = materialColors[theme];
+
+    const updates: { ref: React.RefObject<THREE.Mesh | null>; color: string }[] = [
+      { ref: bodyRef, color: cols.body },
+      { ref: screenBorderRef, color: cols.screenBorder },
+      { ref: logoRef, color: cols.logo },
+      { ref: detailRef, color: cols.detail },
+    ];
+
+    for (const { ref: meshRef, color } of updates) {
+      if (!meshRef.current) continue;
+      animate(meshRef.current, {
+        color,
+        duration: 600,
+        ease: "inOutQuad",
+      });
+    }
+  }, [theme]);
+
   const handlePointerEnter = () => {
     isInteracting.current = true;
   };
   const handlePointerMove = (e: ThreeEvent<PointerEvent>) => {
     mouseRef.current.x = e.pointer.x;
     mouseRef.current.y = e.pointer.y;
-
     lastInteractTime.current = Date.now();
   };
-
   const handlePointerDown = () => {
     isInteracting.current = true;
     lastInteractTime.current = Date.now();
   };
-
   const handlePointerUp = () => {
     isInteracting.current = false;
     lastInteractTime.current = Date.now();
   };
-
   const handlePointerLeave = () => {
     isInteracting.current = false;
     lastInteractTime.current = Date.now();
   };
+
   useFrame(() => {
     if (!ref.current) return;
     const now = Date.now();
 
     if (isInteracting.current || now - lastInteractTime.current < AUTO_ROTATE_DELAY) {
       const targetY = defaultRot.y + mouseRef.current.x * 0.3;
-      const targetX = defaultRot.x + mouseRef.current.y * 0.15;
+      const targetX = defaultRot.x - mouseRef.current.y * 0.15;
       ref.current.rotation.y += (targetY - ref.current.rotation.y) * 0.05;
       ref.current.rotation.x += (targetX - ref.current.rotation.x) * 0.05;
     } else {

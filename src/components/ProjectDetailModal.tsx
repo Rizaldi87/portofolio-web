@@ -77,7 +77,7 @@ export default function ProjectDetailModal({ project, onClose }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 rounded-md
-                         bg-(--accent) text-white font-mono text-sm
+                         bg-(--accent) text-(--text) font-mono text-sm
                          hover:brightness-110 transition-all"
             >
               <span className="material-symbols-outlined text-base">code</span>
@@ -91,7 +91,7 @@ export default function ProjectDetailModal({ project, onClose }: Props) {
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 rounded-md
                          border border-(--accent) text-(--accent) font-mono text-sm
-                         hover:bg-(--accent) hover:text-white transition-all"
+                         hover:bg-(--accent) hover:text-(--text) transition-all"
             >
               <span className="material-symbols-outlined text-base">open_in_new</span>
               Live Demo
